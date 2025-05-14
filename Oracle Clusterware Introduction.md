@@ -1,15 +1,25 @@
+A cluster consists of a group of independent but interconnected computers. A common cluster feature is that it should appear to an application as though it were a single server. Most cluster architectures use a dedicated network (interconnect) for communication and coordination between cluster nodes.
+
+Oracle supports a shared disk cluster architecture providing load balancing and failover capabilities.
+
+In an Oracle cluster, all nodes must share teh same processor architecture and run the same operating system. 
+
 ## Oracle Clusterware is:
 * A key part of Oracle Grid Infrastructure
 * Integrated with Oracle ASM (Automatic Storage Management)
 * The basis for OCFS (Oracle Cloud File System)
 * A foundation for Oracle RAC (Real Application Cluster)
 
+Oracle Clusterware is also a foundation for the ASM Cluster File System (ACFS), a generalized Cluster File System, that can be used for m ost file based data such as documents, spreadsheets and reports.
+
+Oracle Clusterware also manages resources, such as virtual IP (VIP) addresses, databases, listeners, services and so on.
+
 ## Clusterware Architecture and Clusterware Services
 * Shared disk cluster architecture supporting application load balancing and failover
 * Services include:
-  - Cluster management
-  - Node monitoring
-  - Event services
+  - **Cluster management**, which allows cluster services and application resources to be monitored and managed from any node in the cluster 
+  - **Node monitoring**, which provides real-time information regarding which nodes are currently available and the resources they support. Cluster integrity is also protected by evicting or fencing unresponsive nodes.
+  - **Event services**, 
   - Time synchronization
   - Network management
   - High availability
