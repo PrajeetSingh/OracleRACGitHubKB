@@ -1,3 +1,4 @@
+# Oracle Clusterware 
 A cluster consists of a group of independent but interconnected computers. A common cluster feature is that it should appear to an application as though it were a single server. Most cluster architectures use a dedicated network (interconnect) for communication and coordination between cluster nodes.
 
 Oracle supports a shared disk cluster architecture providing load balancing and failover capabilities.
@@ -42,7 +43,7 @@ You must select the Advanced Oracle Clusterware installation option to use GNS.
 
 * Static addresses that network administrators assign on DNS or each node. To use the Typical Oracle Clusterware installation option, yo must use static addresses.
 
-Grid Interprocess Communication (GIPc) is used for Grid (Clusterware) interprocess communication. GIPc is a common communications infrastructure to replace CLSC/NS. It provides full control of the communicatoins stack from the operating system up to whatever client library uses it. GIPc can support multiple communications types: CLSC, TCP, UDP, IPC and of GIPc.
+Grid Interprocess Communication (GIPc) is used for Grid (Clusterware) interprocess communication. GIPc is a common communications infrastructure to replace CLSC/NS. It provides full control of the communicatoins stack from the operating system up to whatever client library uses it. GIPc can support multiple communications types: CLSC, TCP, UDP and IPC.
 
 Use high-speed network adapters for the Interconnects and switches that support TCP/IP. Gigabit Ethernet or an equivalent is recommended.
 
