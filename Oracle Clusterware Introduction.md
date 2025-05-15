@@ -49,4 +49,25 @@ Use high-speed network adapters for the Interconnects and switches that support 
 
 If you have multiple available network interfaces, Oracle recommends that you use the Redundant Interconnect Usage feature to make use of multiple interfaces for the Private Network.
 
-Note: Cross-over cables are not supported for use with Oracle Clusterware interconnects
+Note: Cross-over cables are not supported for use with Oracle Clusterware interconnects.
+
+### Oracle Clusterware Initialization
+The *Oracle High Avaialbility Service Daemon (OHASD) is a critical process in Oracle Clusterware, that manages high availability services.
+
+In Oracle Linux 7, OHASD works as a systemd service.
+
+### Single-Client Access Name (SCAN)
+* The SCAN is the address used by clients connecting to the cluster.
+* The SCAN is a fully qualified host name (host name + domain) registered to three IP addresses.
+
+If you use GNS, and you have DHCP support, then the GNS will assign addresses dynamically to the SCAN.
+
+If you do not use GNS, the SCAN should be defined in the DNS to resolve the three addresses assigned to that name. This should be done before we install Oracle Grid Infrastructure. 
+The SCAN and its associated IP addresses provide a stanbel name for clients to use for connections, independent of the ndes that make up the cluster.
+
+SCANs function like a cluster alias. However, SCANs are resolved on any node in the cluster. The SCAN addresses resolve to the cluster. Nodes can be added to or removed from the cluste rwithout affecting the SCAN address configuration.
+
+During installation, listeners are created on each node for the SCAN IP addresses. Oracle Clusterware routes application requests to the cluster SCAN to the least loaded instance providing the service.
+
+SCANs provide location independence for databases so that the client configuratoin does not have to depend on which nodes run a particular database.
+The SCAN defaults to *clustername-scan.current_domain*, if a GNS domain is not specified at installation.
