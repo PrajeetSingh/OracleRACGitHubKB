@@ -17,6 +17,7 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * Database runs on Hub Nodes and Applications run on Leaf Nodes.
   * Startup and Shutdown dependencies of Database and Application are also taken care by Flex Cluster, as dependencies can be defined here.
   * Leaf Nodes and Hub Nodes leverage HANFS, to ensure HA of storage.
+* Data Files, OCR, Voting Disks, etc, all are on ASM storage.
 
 ## Oracle Clusterware Services
 
@@ -38,4 +39,7 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
     * One is to deal with Public Interfaces/Network and accept connections from Clients, done by `ONS`.
     * Second is for Private Inter-communication between member nodes in the cluster, done by `HAIP`.
   * So, if services fail on one node and these need to be restarted or failed over to other node or bringing things back from other node, when node is up, is taken care by `ONS`.
-  
+* The `HAIP` monitors Private Network Interface. If one Private Network Interface fails, it fails VIP over to next available Private Network Interface.
+  * Different Private Network Interfaces need to be under different Subnets i.e., different network. Example, eth1 on both nodes should be on one network and eth2 on both nodes should be on another network. Now, these two or more Private Network Interfaces can be bonded together as one group using O/S NIC bonding to provide HA and Load Balancing.
+  * For NIC Bonding, we can leverage Oracle Clusterware features too. Oracle Clusterware can group upto 4 private network interfaces. Oracle Clusterware will not use Physical IP Addresses, rather it'll use VIPs, which is `HAIP`. So, in our environment, we'll not see `eth1` but we'll see `eth1:1` and `eth2:1`, which are Virtual Priate Interface.
+  Here, `eth1` and `eth2` are under different subnets/networks but `eth1:1` and `eth2:1` are under same Virtual Subnet, example 172.101.x.x.
