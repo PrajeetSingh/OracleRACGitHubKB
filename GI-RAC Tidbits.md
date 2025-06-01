@@ -7,4 +7,6 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
 * To store Oracle database files, we can use ASM and to use Non-Oracle database files, we can use OCFS (Oracle Cloud File System, previously known as ACFS) in shared file system.
 * OCFS can also be used to store, data files, control files, online redo log files, etc.
 * Another benefit of OCFS is that we can take snapshot of it and then snapshots of snapshots.
-  * If we have a PDB database of say 10 TB, we can take snapshot of this PDB, which will take seconds. This way we can clone our database very quickly, especially for our testing and QA databases.
+  * If we have a PDB database of say 10 TB, we can take a snapshot of this PDB, which will take seconds. This way we can clone our database very quickly, especially for our testing and QA databases.
+  * OCFS has a feature of Tagging. So, we can set a group of directories or files as a logical group.
+  * So, ACFS with DB Files, Tagging, Auditing, Encryption and Snapshotting, is OCFS.
