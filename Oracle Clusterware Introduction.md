@@ -63,7 +63,7 @@ Oracle Clusterware also manages resources, such as virtual IP (VIP) addresses, d
 
 * Each public network must support TCP/IP, because clients use TCP/IP connections to connect to clusterware.
 
-* The interconnect (Private Network) adapter must support UDP (User Datagram Protocol) or RDS (Reliable Data Socket)
+* The interconnect (Private Network) adapter must support UDP (User Datagram Protocol) or RDS (Reliable Data Socket) (**IMPORTANT**).
 
 * All platforms use Grid Interprocess Communication (GIPc)
 
