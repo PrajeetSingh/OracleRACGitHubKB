@@ -18,3 +18,11 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * Startup and Shutdown dependencies of Database and Application are also taken care by Flex Cluster, as dependencies can be defined here.
   * Leaf Nodes and Hub Nodes leverage HANFS, to ensure HA of storage.
 
+## Oracle Clusterware Services
+
+* Voting Disk is a Clusterware Repository, it keeps Node membership information.
+  * CSSD (Cluster Synchronisation Services Daemon) background process continuously communicate with pier members and updates Voting Disk with status of pier members.
+* OCR (Oracle Cluster Registry), includes clusterware resource management information.
+  * Example of resources is like DB Instance, Listener, VIPs, etc.
+  * CRSD (Cluster Ready Services Daemon), background process accesses OCR to manage Oracle Clusterware resources and updates OCR accordingly.
+  * CRSD is responeible for starting, stopping, monitoring and failing over all configured cluster resources.
