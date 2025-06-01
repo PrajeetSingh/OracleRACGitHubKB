@@ -26,4 +26,4 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
 
 * Data Files, OCR, Voting Disks, etc, all are on ASM or OCFS storage.
 
-* *The interconnect (Private Network) adapter must support UDP (User Datagram Protocol) or RDS (Reliable Data Socket).*
+* **The interconnect (Private Network) adapter must support UDP (User Datagram Protocol) or RDS (Reliable Data Socket).**
