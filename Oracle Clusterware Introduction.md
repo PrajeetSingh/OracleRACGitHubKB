@@ -26,7 +26,7 @@ Oracle Clusterware also manages resources, such as virtual IP (VIP) addresses, d
   - **High availability**, which services, monitors, and restarts all other resources are required.
   - **Cluster Interconnect Link Aggregation (HAIP)**
 
-## Oracle Clusterware Services
+### Oracle Clusterware Services
 
 * `Voting Disk` is a Clusterware Repository, it keeps Node membership information.
   * `CSSD (Cluster Synchronisation Services Daemon)` background process continuously communicate with pier members and updates Voting Disk with status of pier members.
