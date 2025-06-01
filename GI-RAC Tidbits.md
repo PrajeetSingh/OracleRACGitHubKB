@@ -34,6 +34,8 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * `Observer Mode`: If an NTP (Network Time Protocol) service is already configured and running in the Operating System, CTSSD will run in Observer Mode.
   * `Active Mode`: If NTP is not detected and configured on Operating System, CTSSD will start in Active Mode. In this mode, it actively synchronises time amount the cluster members, electing a reference node and pushing time updates to other nodes.
 * The `ONS (Oracle Network Service)`, background process is responsible for Network Management. It provisions and manages VIP addresses that are associated with cluster nodes or application resources to provide a consistent network identity regardless of which nodes are available. In addition, `GNS (Grid Naming Service)` manages network naming within the cluster.
-  * In order to keep and manager Oracle Cluster, we need two kind of Network Services.
-    * One is to deal with Public Interfaces/Network and accept connections from Clients.
-    * Second is network interface is to for Private Inter-communication between member nodes in the cluster.
+  * In order to keep and manage Oracle Cluster, we need two kind of Network Services.
+    * One is to deal with Public Interfaces/Network and accept connections from Clients, done by `ONS`.
+    * Second is for Private Inter-communication between member nodes in the cluster, done by `HAIP`.
+  * So, if services fail on one node and these need to be restarted or failed over to other node or bringing things back from other node, when node is up, is taken care by `ONS`.
+  
