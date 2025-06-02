@@ -120,3 +120,23 @@ The SCAN defaults to *clustername-scan.current_domain*, if a GNS domain is not s
 * Purpose of `SCAN VIPs` is to forward connections to SCAN Listeners in Round Robin fashion, so that connection request is evenly distributed.
 * `SCAN Listener` is used to return least loaded DB Instance.
 * `Local Listener` is used to make DB connection after authenticating user.
+
+## GPnP (Grid Plug and Play) Architecture: Overview
+
+When we create Oracle Cluster using GPnP, it simplifies Node Addition and Node Removal.
+
+In Static Configuration (Non-GPnP), we need to add new Node to an existing cluster, we  have to prepare Private network interface, Public network interface, prepare shared Storage, we have to contact Network Admins to update Node VIPs for Public and Private IPs, etc for newly added server.
+
+So, whenever we add a new server, we have to work many team members to do many things, in Cloud environments, it doesn't work because we have to Scale Up and Scale Down dyamically with minimal user intervention.
+
+So, in order to support Dynamic Cluster Management, we need to use GPnP. GPnP uses a component called GNS (Grid Naming Service). GNS works with DHCP. 
+
+With GNS, we don't need SCAN VIPs and Node VIPs in DNS, because GNS will automatically obtain these IP addresses from DHCP. These VIPs are then mapped with Hostnames by mDNS (multi-cast DNS, Oracle version of DNS) internally.
+
+### GPnP Service
+
+When we add a new server, new server will seach for GPnP in the peer members and obtain Profile from one of them.
+
+The Profile, is a file that includes current Storage Configuration, Network Configuration, Interconnect configuration, etc. So, when we add the new server, GPnP adds new server as per the information it gets from the Profile.
+
+So, GPnP does use SCAN, SCAN VIPs, SCAN Listeners, other VIPs, GNS, MDNS, DHCP, GPnP Daemon process, etc.
