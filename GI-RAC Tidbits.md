@@ -34,3 +34,11 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * GNS VIPs
   * Apps VIPs
   * In Standard Cluster, GNS VIPs are optional but in Flex Clusters, it is mandatory.
+
+  * When using SCAN, client configuration looks like:
+    * `tnsnames.ora:` app = cluster01-scan.domain, 1521, TCP, servicename.
+    * Here SCAN (cluster01-scan.domain), is an alias or associated with VIPs node1-vip, node2-vip, node3-vip in DNS.
+    * node1-vip, node2-vip and node3-vip are addresses of SCAN Listener.
+    * In Oracle 11.1, when there was no SCAN, these VIPs pointed to local listeners and Oracle used Random Access based Load Balancing, so Nodes were unevenly loaded.
+    * In case of SCAN, DNS uses round robin method to use these VIPs.
+    * Now, whether we add or remove nodes from Cluster, as SCAN name remains same, client side configurations remain same too and addition or removal of nodes become transparent.
