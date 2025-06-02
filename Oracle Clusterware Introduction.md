@@ -116,7 +116,7 @@ The SCAN defaults to *clustername-scan.current_domain*, if a GNS domain is not s
 
 #### Summary
 
-* SCAN is used to simplify client side Net service configuration.
-* Purpose of SCAN VIPs is to forward connections to SCAN Listeners in Round Robin fashion, so that connection request is evenly distributed.
-* SCAN Listener is used to return least loaded DB Instance.
-* Local Listener is used to make DB connection after authenticating user.
+* `SCAN` is used to simplify client side Net service configuration.
+* Purpose of `SCAN VIPs` is to forward connections to SCAN Listeners in Round Robin fashion, so that connection request is evenly distributed.
+* `SCAN Listener` is used to return least loaded DB Instance.
+* `Local Listener` is used to make DB connection after authenticating user.
