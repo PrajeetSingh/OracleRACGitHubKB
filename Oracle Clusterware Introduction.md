@@ -172,3 +172,17 @@ When resolving the address listed in the connect string:
   * This IP address should be defined in the DNS domain.
 
 To use GNS, before installation, the DNS administrator must establish domain delegation to the subdomain for the cluster. The Queries to the cluster are sent tothe GNS Listener on the GNS VIP address. When a request comes to the domain, GNS resolves it by using its internal mDNS and responds to the query.
+
+The SCAN is a fully qualified host name located in the GNS subdomain registered to three IP addresses.
+
+If you use GNS, and you have DHCP support, then the GNS will assign addresses dynamically to the SCAN.
+
+If you do not use GNS, then SCAN should be defined in the DNS to resovle to the three addresses assigned to that name. **NOTE**, this should be done before you install Oracle Grid Infrastructure.
+
+SCAN functions like a Cluster Alias and provide a stable name for clients to use for connections, independent of the nodes that make up the cluster.
+
+Instances register with SCAN listeners only as remote listeners. Upgraded databases register with SCAN Listeners as remove listeners and also continue to register with all other listeners.
+
+If you specify a GNS domain during installation, the SCAN defaults to *clustername-scan.GNS_domain*.
+
+If a GNS domain is not specified at installation, the SCAN defaults to *clustername-scan.current_domain*.
