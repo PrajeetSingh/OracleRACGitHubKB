@@ -42,3 +42,6 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * In Oracle 11.1, when there was no SCAN, these VIPs pointed to local listeners and Oracle used Random Access based Load Balancing, so Nodes were unevenly loaded.
   * In case of SCAN, DNS uses round robin method to use these VIPs.
   * Now, whether we add or remove nodes from Cluster, as SCAN name remains same, client side configurations remain same too and addition or removal of nodes become transparent.
+
+* What does SCAN Listener do?
+  It provides Server side Load Balancing information i.e., which DB Instance is least loaded Instance.
