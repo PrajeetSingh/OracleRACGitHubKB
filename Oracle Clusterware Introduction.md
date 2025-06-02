@@ -135,9 +135,15 @@ With GNS, we don't need SCAN VIPs and Node VIPs in DNS, because GNS will automat
 
 ### GPnP Service
 
-When we add a new server, new server will seach for GPnP in the peer members and obtain Profile from one of them.
+The GPnP service is collectively provided by all the GPnP agents. The service is instantiated on each node in the domain as a GPnP agent. The service is peer-to-peer, there is no master process.
 
-The Profile, is a file that includes current Storage Configuration, Network Configuration, Interconnect configuration, etc. So, when we add the new server, GPnP adds new server as per the information it gets from the Profile.
+GPnP required standard IP multicast protocol (provided by mDNS), to locate peer services. Using multicast discovery, GPnP locates peers without configuration. This is how a GPnP agent on a new node locates another agent that may have a profile it should use.
+
+With GPnP domain, host names are resolved by using mDNS. GPnP creates a service called GNS (Grid Naming Service) to resolve the GPnP names on the fixed addresses.
+
+When we add a new server, new server will seach for GPnP agent in the peer members and obtain Profile from one of them.
+
+`The Profile`, is a file that includes current Storage Configuration, Network Configuration, Interconnect configuration, etc. So, when we add the new server, GPnP adds new server as per the information it gets from the Profile.
 
 So, GPnP does use SCAN, SCAN VIPs, SCAN Listeners, other VIPs, GNS, MDNS, DHCP, GPnP Daemon process, etc. but most of them are taken care of by GPnP itself.
 
