@@ -113,3 +113,10 @@ During installation, SCAN listeners are created on each node for the SCAN IP add
 
 SCAN provides location independence for databases, so that the client configuratoin does not have to depend on which nodes run a particular database.
 The SCAN defaults to *clustername-scan.current_domain*, if a GNS domain is not specified at installation.
+
+#### Summary
+
+* SCAN is used to simplify client side Net service configuration.
+* Purpose of SCAN VIPs is to forward connections to SCAN Listeners in Round Robin fashion, so that connection request is evenly distributed.
+* SCAN Listener is used to return least loaded DB Instance.
+* Local Listener is used to make DB connection after authenticating user.

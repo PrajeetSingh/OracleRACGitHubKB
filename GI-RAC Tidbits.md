@@ -44,4 +44,6 @@ This page contains miscellaneous but valuable pieces of information, quick tips,
   * Now, whether we add or remove nodes from Cluster, as SCAN name remains same, client side configurations remain same too and addition or removal of nodes become transparent.
 
 * What does SCAN Listener do?
-  It provides Server side Load Balancing information i.e., which DB Instance is least loaded Instance.
+  * It provides Server side Load Balancing information i.e., which DB Instance is least loaded Instance.
+  * So, Client requests to know which DB Instance to connect to and SCAN Listener provides that Node info to the Client.
+    * For example, if Instance3 is least loaded, SCAN Listener will provide VIP of it to Client, and Client will connect to Local Listener on Instance3 and make a DB connection.
