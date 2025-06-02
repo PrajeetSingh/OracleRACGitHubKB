@@ -158,3 +158,17 @@ When resolving the address listed in the connect string:
 * GNS, which has 3 SCAN VIPs stored in it, will provide SCAN VIP of one of SCAN Listener in round robin fashion.
 * SCAN Listener will provide IP address of Local Listener, which is least loaded.
 * Using IP address of Local Listener with least loaded Database Instance, Database Client will connect to it after authentication.
+
+## Grid Naming Service (GNS)
+
+* The only Static IP address required for the cluster is the GNS virtual IP address
+* Each node runs a multicast DNS (mDNS) process.
+  * GNS sets up a multicast DNS (mDNS) server within the cluster, which resolves names in the cluster without Static configuration of the DNS server for other node IP addresses.
+* You cannot use GNS with another multicast DNS.
+  * If you want to use GNS, disable any third-party mDNS daemons on your system (**IMPORTANT**).
+
+* GNS assumes that there is a DHCP server running on the Public Network with enough addresses to assign to the VIPs and SCAN VIPs.
+* WIth GNS, only one Static IP address is required for the cluster, the GNS Virtual IP Address.
+  * This IP address should be defined in the DNS domain.
+
+To use GNS, before installation, the DNS administrator must establish domain delegation to the subdomain for the cluster. The Queries to the cluster are sent tothe GNS Listener on the GNS VIP address. When a request comes to the domain, GNS resolves it by using its internal mDNS and responds to the query.
