@@ -125,7 +125,7 @@ The SCAN defaults to *clustername-scan.current_domain*, if a GNS domain is not s
 
 When we create Oracle Cluster using GPnP, it simplifies Node Addition and Node Removal.
 
-In Static Configuration (Non-GPnP), we need to add new Node to an existing cluster, we  have to prepare Private network interface, Public network interface, prepare shared Storage, we have to contact Network Admins to update Node VIPs for Public and Private IPs, etc for newly added server.
+In Static Configuration (Non-GPnP), we need to add new Node to an existing cluster, we have to prepare Private network interface, Public network interface, prepare shared Storage, we have to contact Network Admins to update Node VIPs for Public and Private IPs, etc for newly added server.
 
 So, whenever we add a new server, we have to work many team members to do many things, in Cloud environments, it doesn't work because we have to Scale Up and Scale Down dyamically with minimal user intervention.
 
@@ -139,4 +139,16 @@ When we add a new server, new server will seach for GPnP in the peer members and
 
 The Profile, is a file that includes current Storage Configuration, Network Configuration, Interconnect configuration, etc. So, when we add the new server, GPnP adds new server as per the information it gets from the Profile.
 
-So, GPnP does use SCAN, SCAN VIPs, SCAN Listeners, other VIPs, GNS, MDNS, DHCP, GPnP Daemon process, etc.
+So, GPnP does use SCAN, SCAN VIPs, SCAN Listeners, other VIPs, GNS, MDNS, DHCP, GPnP Daemon process, etc. but most of them are taken care of by GPnP itself.
+
+### Client Database Connections with GPnP / GNS
+
+In a GPnP environment, the Database Client no longer has to use the TNS address to contact the listener on a target node.  Instead it can use the EZConnect method to connect to the database.
+
+When resolving the address listed in the connect string:
+
+* The Database Client with SCAN Alias, connect to DNS. In EZConnect syntax, this would look like scan-name.cluster-name.domain/ServiceName, where the service name is the database service name.
+* DNS having the VIP of GNS, will forward request to GNS.
+* GNS, which has 3 SCAN VIPs stored in it, will provide SCAN VIP of one of SCAN Listener in round robin fashion.
+* SCAN Listener will provide IP address of Local Listener, which is least loaded.
+* Using IP address of Local Listener with least loaded Database Instance, Database Client will connect to it after authentication.
