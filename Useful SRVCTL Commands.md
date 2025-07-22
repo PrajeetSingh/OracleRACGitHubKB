@@ -3,13 +3,20 @@
 ## Start & Stop RAC Databases
 
 ```sh
+# Display the database registered in the repository
+srvctl config database
+
+# Display configuration details of database
+srvctl config database -d RAC
+```
+
+```sh
 # Start/Stop/Check database
 srvctl status database -d RAC
 srvctl start database -d RAC -o nomount / mount / open
 srvctl stop database -d RAC -o immediate
 
 srvctl status service -d RAC
-srvctl config database -d RAC
 ```
 
 ```sh
@@ -32,6 +39,13 @@ srvctl status instance -d RAC -i instancename
 ```
 
 ```sh
+# Start/Stop/Check Listener
+srvctl start listener -n racnode1
+srvctl stop listener -n racnode1
+srvctl status listener -n racnode1
+```
+
+```sh
 # Check Nodeapps, like VIP, Network, and ONS
 srvctl status nodeapps
 srvctl status nodeapps -n racnode1 
@@ -47,3 +61,6 @@ srvctl config scan
 srvctl status scan_listener
 srvctl config scan_listener
 ```
+
+
+https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/
