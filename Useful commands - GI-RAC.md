@@ -8,14 +8,12 @@ olsnodes -n
 
 ## Start or Stop Cluster
 
-* Start clusterware (CRS + HAS) on the local node
-
 ```sh
+# Start clusterware (CRS + HAS) on the local node
 crsctl start cluster
 ```
 
-* Start clusterware on all nodes in the cluster.
-
 ```sh
+# Start clusterware on all nodes in the cluster.
 crsctl start cluster -all
 ```
