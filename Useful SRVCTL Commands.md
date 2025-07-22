@@ -62,5 +62,4 @@ srvctl status scan_listener
 srvctl config scan_listener
 ```
 
-
-https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/
+<https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/>

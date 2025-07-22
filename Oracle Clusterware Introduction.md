@@ -6,7 +6,7 @@ Oracle supports a shared disk cluster architecture providing load balancing and 
 
 In an Oracle cluster, all nodes must share teh same processor architecture and run the same operating system. 
 
-## Oracle Clusterware is:
+## Oracle Clusterware is
 
 * A key part of Oracle Grid Infrastructure
 * Integrated with Oracle ASM (Automatic Storage Management)

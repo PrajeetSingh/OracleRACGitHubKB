@@ -1,6 +1,6 @@
 # Oracle Cluster Registry (OCR) Administration
 
-## OCR Management 
+## OCR Management
 
 * Verify OCR
 

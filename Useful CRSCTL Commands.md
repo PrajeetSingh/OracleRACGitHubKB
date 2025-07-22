@@ -130,4 +130,4 @@ CRSD Ora root agent logs
 $GRID_HOME/log/<hostname>/agent/crsd/orarootagent_<crs admin username>
 ```
 
-https://docs.oracle.com/en/database/oracle/oracle-database/19/cwadd/oracle-clusterware-control-crsctl-utility-reference.html#GUID-1A6774CF-FD5F-463E-817F-34E4466443C7
+<https://docs.oracle.com/en/database/oracle/oracle-database/19/cwadd/oracle-clusterware-control-crsctl-utility-reference.html#GUID-1A6774CF-FD5F-463E-817F-34E4466443C7>
