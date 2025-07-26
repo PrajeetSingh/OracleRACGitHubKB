@@ -55,3 +55,14 @@ srvctl config databae -db orcl
 * **RCBG** - Result Cache Background Process
 * **RMSn** - Oracle RAC Management  Process
 * **RSMN** - Remote Slave Monitor
+
+## Verify DB
+
+```sql
+select instance_name from gv$instance;
+
+select name from v$datafile;
+
+select name from v$controlfile;
+
+```
