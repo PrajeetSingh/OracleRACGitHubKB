@@ -2,6 +2,7 @@
 
 > **Prerequisites** 
 > GI must be installed before Oracle RAC installation and configuration.
+>
 > Ensure passwordless SSH communication between all nodes.
 
 
