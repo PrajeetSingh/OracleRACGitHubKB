@@ -3,6 +3,7 @@
 ## Types of Instances
 
 There are three type of Oracle database instances:
+
 * Single Instance databases
 * RAC One Node databases
 * RAC databases
@@ -53,3 +54,17 @@ select resource_name, current_utilization, max_utilization from v$resource_limit
 
 select * from v$sgastat where name like 'g_s%' or name like 'KCL%';
 ```
+
+## Background Processes Specific to Oracle RAC
+
+* **ACMS** - Atomic Control File to Memory Service
+* **GTX[0-j]** - Global Transaction Process
+* **LMON** - Global Enqueue Service Monitor
+* **LMD** - Global Enqueue Service Daemon
+* **LMS** - Global Cache Service Process
+* **LCK0** - Instance Enqueue Process
+* **LMHB** - Global Cache/Enqueue Service Heartbeat Monitor
+* **PING** - Interconnect Latency Measurement Process
+* **RCBG** - Result Cache Background Process
+* **RMSn** - Oracle RAC Management  Process
+* **RSMN** - Remote Slave Monitor
