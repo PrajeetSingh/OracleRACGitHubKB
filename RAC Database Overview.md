@@ -15,7 +15,7 @@ These are Non-High Availability single instance databaeses.
 ### RAC One Node
 
 * This is Single-Instance High Availability.
-* These are two Active-Passive nodes/instances. At one time, there can be only 1 active node/instance but in case of node failure, database will failover to passive node. 
+* These are two Active-Passive nodes/instances. At one time, there can be only 1 active node/instance but in case of node failure, database will failover to passive node.
 * Here we need to remember that, in this case node with Passive instance is lying idle and is a wastage of resource but is a lot cheaper than RAC database.
 * It provides Online rolling patch application.
 * It also provides Rolling Upgrades for the Operating System and Oracle Clusterware. We can do online database relocation between nodes for this any maintenance operation.

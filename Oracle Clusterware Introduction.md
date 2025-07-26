@@ -4,7 +4,7 @@ A cluster consists of a group of independent but interconnected computers. A com
 
 Oracle supports a shared disk cluster architecture providing load balancing and failover capabilities.
 
-In an Oracle cluster, all nodes must share teh same processor architecture and run the same operating system. 
+In an Oracle cluster, all nodes must share teh same processor architecture and run the same operating system.
 
 ## Oracle Clusterware is
 
@@ -21,7 +21,7 @@ Oracle Clusterware also manages resources, such as virtual IP (VIP) addresses, d
 
 * Shared disk cluster architecture supporting application load balancing and failover
 * Services include:
-  * **Cluster management**, which allows cluster services and application resources to be monitored and managed from any node in the cluster 
+  * **Cluster management**, which allows cluster services and application resources to be monitored and managed from any node in the cluster.
   * **Node monitoring**, which provides real-time information regarding which nodes are currently available and the resources they support. Cluster integrity is also protected by evicting or fencing unresponsive nodes.
   * **Event services**, which publish cluster events so that applications are aware of changes in the cluster.
   * **Time synchronization**, which synchronizes the time on all nodes of the cluster.
@@ -129,7 +129,7 @@ In Static Configuration (Non-GPnP), we need to add new Node to an existing clust
 
 So, whenever we add a new server, we have to work many team members to do many things, in Cloud environments, it doesn't work because we have to Scale Up and Scale Down dyamically with minimal user intervention.
 
-So, in order to support Dynamic Cluster Management, we need to use GPnP. GPnP uses a component called GNS (Grid Naming Service). GNS works with DHCP. 
+So, in order to support Dynamic Cluster Management, we need to use GPnP. GPnP uses a component called GNS (Grid Naming Service). GNS works with DHCP.
 
 With GNS, we don't need SCAN VIPs and Node VIPs in DNS, because GNS will automatically obtain these IP addresses from DHCP. These VIPs are then mapped with Hostnames by mDNS (multi-cast DNS, Oracle version of DNS) internally.
 

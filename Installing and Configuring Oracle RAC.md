@@ -32,7 +32,7 @@ Once Software is installed, we'll create Cluster database.
 * Provide `Memory Size` for SGA and PGA, Processes and Character Set.
 * Once all done, click Finish to create the database.
 
-### Download and Install latest Oracle Patches.
+### Download and Install latest Oracle Patches
 
 ### Verify the Cluster Database configuration
 
@@ -64,5 +64,4 @@ select instance_name from gv$instance;
 select name from v$datafile;
 
 select name from v$controlfile;
-
 ```
