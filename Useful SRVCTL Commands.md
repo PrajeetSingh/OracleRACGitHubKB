@@ -15,6 +15,7 @@ srvctl config database -d RAC
 srvctl status database -d RAC
 srvctl start database -d RAC -o nomount / mount / open
 srvctl stop database -d RAC -o immediate
+srvctl stop database -d RAC -eval
 
 srvctl status service -d RAC
 ```
