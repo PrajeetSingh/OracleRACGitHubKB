@@ -20,6 +20,13 @@ srvctl status service -d RAC
 ```
 
 ```sh
+# Start/Stop/Check RAC Instances
+srvctl start instance -d RAC -i instancename
+srvctl stop instance -d RAC -i instancename
+srvctl status instance -d RAC -i instancename
+```
+
+```sh
 # Start/Stop/Check ASM
 srvctl status asm 
 srvctl status asm -a
@@ -29,13 +36,6 @@ srvctl start asm
 srvctl start asm -n racnode1
 srvctl stop asm
 srvctl stop asm -n racnode1 -f
-```
-
-```sh
-# Start/Stop/Check RAC Instances
-srvctl start instance -d RAC -i instancename
-srvctl stop instance -d RAC -i instancename
-srvctl status instance -d RAC -i instancename
 ```
 
 ```sh
@@ -62,4 +62,9 @@ srvctl status scan_listener
 srvctl config scan_listener
 ```
 
-<https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/>
+```sh
+# Check Oracle Service
+srvctl config service -db RAC
+```
+
+[]: # <https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/>

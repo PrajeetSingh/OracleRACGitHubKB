@@ -30,7 +30,7 @@ select name from v$controlfile;
 * Give Template Name. It'll create backup of database in .dfb format.
 * Check `Maintain the file locations` for same directory structure or `Covert the file locations to use OFA structure` to use OMF.
 * Review summary and click Finish to start the process.
-* Now files with .ctl, .dbc and .dfb are created. .dbc file will contain the template and structure information. .dfb is actual backup file. .ctl is the control file.
+* Now files with .ctl, .dbc and .dfb are created. .dbc file will contain the template and database structure information. .dfb is actual backup file. .ctl is the control file.
 
 ### Start Conversion Process on destination database node
 
