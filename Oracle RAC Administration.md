@@ -22,6 +22,8 @@ alter system set undo_tablespace=UNDOTBS2 sid='RAC02';
 -- Here, if you run above commands in CDB, UNDO tablespaces will be assigned to CDB but if you run inside PDB, these will be assigned to PDBs.
 ```
 
+## Managing PDBs and Services
+
 In Oracle RAC, we can manage RAC PDBs by managing services. Assign one database service to each PDB to coordinate start, stop and placement of PDBs across instances.
 
 ### To add a service for a PDB
@@ -40,4 +42,36 @@ srvctl config service -d RAC -s mypdb_svc
 srvctl start service -d RAC -s mypdb_svc
 srvctl stop service -d RAC -s mypdb_svc
 srvctl status service -d RAC -s mypdb_svc
+```
+
+```sql
+col inst_name format a20
+select * from v$active_instances;
+```
+
+By default, `Management policy` is `AUTOMATIC`. Means, when server is restarted, Oracle instance will start automatically, or when instance crashes, it'll attempt to restart automatically.
+
+We can change this policy to `MANUAL` too.
+
+```sh
+srvctl config database -d RAC -a
+srvctl modify database -d RAC -policy MANUAL;
+```
+
+> Remember: Pfiles have pointers to SPFILES.
+
+## SPFILE parameter values and RAC
+
+We can change parameter settings using `ALTER SYSTEM` command, but now in RAC, we need to use `sid='<sid|*>'` along with it.
+
+```sql
+-- To set a parameter value. For PDB, ISPDB_MODIFIABLE value for the parameter must be TRUE in GV$SYSTEM_PARAMETER view.
+alter system set <parameter_name>=<value> scope=MEMORY|SPFILE|BOTH sid='<sid|*>';
+
+-- To reset a parameter value to default
+alter system reset <parameter_name>  scope=MEMORY|SPFILE|BOTH sid='<sid|*>';
+
+col name format a50
+col value format a100
+select name, value From gv$system_parameter where name = <parameter_name>;
 ```
