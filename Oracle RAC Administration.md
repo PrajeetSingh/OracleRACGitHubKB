@@ -7,11 +7,11 @@
 Same way, when we add a new Node to the `server pool`, instance is automatically added to the cluster on new Node, which is not in the case of Administrator managed Clusters.
 Like, we'll have to manually add new instance if we want to add new node to the cluster.
 
-There should be different set of REDO Groups assigned to different Nodes. Thread 1 is assigned to Instance 1 and Thread 2 is assigned to Instance 2. If we add new node, then we need to manually add new REDO Log groups for this Instance but if Policy managed database, all such things are automated. Same is the case of dropping the node, things will be automatically taken care by server pool in case of policy managed databases but need to be done manually by DBA for Adminsitrator managed databaes.
+There should be different set of REDO Groups assigned to different Nodes. Thread 1 is assigned to Instance 1 and Thread 2 is assigned to Instance 2. If we add new node, then we need to manually add new REDO Log groups for this Instance but if Policy managed database, all such things are automated. Same is the case of dropping the node, things will be automatically taken care by server pool in case of policy managed databases but need to be done manually by DBA for Adminsitrator managed databases.
 
 Policy managed database is Dynamic database management, whereas Administrator managed databases are Static database management.
 
-So, in case of Policy managed databaes, instances are associated to Server Pool, not to nodes, unlike Administrator managed databases.
+So, in case of Policy managed databases, instances are associated to Server Pool, not to nodes, unlike Administrator managed databases.
 
 ## Associate an UNDO Tablespace with a particular RAC instance
 
@@ -75,3 +75,15 @@ col name format a50
 col value format a100
 select name, value From gv$system_parameter where name = <parameter_name>;
 ```
+
+## Terminating Sessions on a Specific Instance
+
+```sql
+select sid, serial#, inst_id from gv$session where username = 'myuser';
+
+alter system kill session 'SID,Serial#,@InstID';
+
+alter system kill session '101,1003,@1';
+```
+
+## How SQL * Plus commands affect instances
