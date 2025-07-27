@@ -69,7 +69,7 @@ olsnodes -l -p
 olsnodes -i
 olsnodes -i racnode1
 
-# Check node status
+# Check node status (Active/Inactive)
 olsnodes -s
 
 # Check clusterware name
@@ -79,19 +79,34 @@ olsnodes -c
 ```sh
 # Display Global public and global cluster_conterconnect
 oifcfg getif
+
+# Show network interface roles
+oifcfg getif eth0
 ```
 
 ```sh
-# Check software version
-# Binary version
+# Check software version / Binary version
 crsctl query crs softwareversion
 # Active version
 crsctl query crs activeversion
+# Release version
+crsctl query crs releaseversion
+```
+
+```sh
+# Enable / disable automatic start of CRS daemon
+crsctl disable has
+crsctl enable has
 ```
 
 ```sh
 # Check Voting Disk
 crsctl query css votedisk
+```
+
+```sh
+# Verify OCR integrity and configuration across all nodes
+cluvfy comp ocr -n all -verbose
 ```
 
 ## Oracle Clusterware Logs

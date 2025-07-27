@@ -5,6 +5,7 @@
 * Verify OCR
 
 ```sh
+# Quick health check of OCR
 ocrcheck
 
 # To see the contents of OCR
@@ -15,6 +16,8 @@ ocrdump -xml /tmp/ocr.bkp
 * Check OCR Backups
 
 ```sh
+# Show OCR backup history
+ocrconfig -showbackup
 ocrconfig -showbackup auto
 
 # Manual backup of OCR

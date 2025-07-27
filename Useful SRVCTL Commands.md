@@ -11,7 +11,7 @@ srvctl config database -d RAC
 ```
 
 ```sh
-# Start/Stop/Check database
+# Start/Stop/Check database (All Instances, Services and Listeners)
 srvctl status database -d RAC
 srvctl start database -d RAC -o nomount / mount / open
 srvctl stop database -d RAC -o immediate
@@ -21,9 +21,13 @@ srvctl status service -d RAC
 
 ```sh
 # Start/Stop/Check RAC Instances
+srvctl status instance -d RAC -i instancename
 srvctl start instance -d RAC -i instancename
 srvctl stop instance -d RAC -i instancename
-srvctl status instance -d RAC -i instancename
+
+srvctl add instance -d RAC -i instancename -n racnode1
+srvctl modify instance -d RAC -i instancename -n racnode1 -K
+srvctl remove instance -d RAC -i instancename
 ```
 
 ```sh
@@ -36,6 +40,11 @@ srvctl start asm
 srvctl start asm -n racnode1
 srvctl stop asm
 srvctl stop asm -n racnode1 -f
+
+srvctl config asm
+srvctl add asm -n racnode3 -G +DATA
+srvctl remove asm -n racnode3
+srvctl modify asm -n racnode3 -p '+DATA'
 ```
 
 ```sh
@@ -43,6 +52,11 @@ srvctl stop asm -n racnode1 -f
 srvctl start listener -n racnode1
 srvctl stop listener -n racnode1
 srvctl status listener -n racnode1
+
+srvctl config listener
+srvctl add listener -n racnode1 -l Listener1 -p 1522
+srvctl modify listener -l Listener1 -p 1523
+srvctl remove listener -l Listener1
 ```
 
 ```sh
@@ -57,14 +71,76 @@ srvctl config nodeapps -n racnode2
 # Check SCAN listener
 srvctl status scan
 srvctl config scan
+srvctl stop scan
+srvctl start scan
 
 srvctl status scan_listener
 srvctl config scan_listener
+srvctl stop scan_listener
+srvctl start scan_listener
+
+# Add/Remove SCAN VIP & Listener
+
+srvctl add scan -n <scan_name>
+srvctl remove scan
+
+srvctl add scan_listener
+srvctl remove scan_listener
+
+# Change SCAN Listener Port
+srvctl modify scan_listener -p <port_number>
 ```
 
 ```sh
 # Check Oracle Service
 srvctl config service -db RAC
+
+srvctl add service -d RAC -s service_name -preferred racnode1,racnode2
+srvctl remove service -d RAC -s service_name
+srvctl start service -d RAC -s service_name
+srvctl stop service -d RAC -s service_name
+srvctl relocate service -d RAC -s service_name -i instance
+```
+
+```sh
+# Check Node Applications (VIP, Network, GSD, ONS)
+srvctl config nodeapps
+srvctl status nodeapps
+srvctl status nodeapps -n racnode1
+
+srvctl stop nodeapps
+srvctl stop nodeapps -n racnode1
+
+srvctl start nodeapps
+srvctl start nodeapps -n racnode1
+```
+
+## Oracle ASM (ASMCLI / ASMCMD)
+
+### List and manage Disk Groups
+
+```sh
+asmcmd lsdg
+asmcmd mkdg -G DATA -c HIGH -A NORMAL +DATA2
+asmcmd dropdg +OLD_DG
+```
+
+### View and Rebalance disks
+
+```sh
+asmcmd lsdsk -k
+asmcmd rebal -G DATA -p 8
+asmcmd lsop
+```
+
+```sh
+asmcmd spget
+asmcmd spbackup +data/.../registry.###.######## /backup/spfile.ora
+```
+
+```sh
+asmcmd showclustermode
+asmcmd showversion
 ```
 
 <!-- https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/ -->
