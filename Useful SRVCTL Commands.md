@@ -67,4 +67,4 @@ srvctl config scan_listener
 srvctl config service -db RAC
 ```
 
-`` <https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/> ``
+`` https://valehagayev.wordpress.com/2016/04/16/useful-oracle-rac-commands/
