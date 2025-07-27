@@ -87,3 +87,12 @@ alter system kill session '101,1003,@1';
 ```
 
 ## How SQL * Plus commands affect instances
+
+| SQL*Plus Command           | Associated Instance                                                                 |
+|----------------------------|-------------------------------------------------------------------------------------|
+| ARCHIVE LOG                | Generally affects the current instance                                              |
+| CONNECT                    | Affects the default instance if no instance is specified in the CONNECT command      |
+| RECOVER                    | Does not affect any particular instance, but rather the database                     |
+| SHOW PARAMETER / SHOW SGA  | Displays parameters and SGA info for the current instance                            |
+| STARTUP / SHUTDOWN         | Operate on the current instance                                                     |
+| SHOW INSTANCE              | Shows details about the current instance                                            |
