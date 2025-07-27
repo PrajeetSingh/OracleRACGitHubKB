@@ -16,8 +16,6 @@ srvctl status database -d RAC
 srvctl start database -d RAC -o nomount / mount / open
 srvctl stop database -d RAC -o immediate
 srvctl stop database -d RAC -eval
-
-srvctl status service -d RAC
 ```
 
 ```sh
@@ -25,10 +23,28 @@ srvctl status service -d RAC
 srvctl status instance -d RAC -i instancename
 srvctl start instance -d RAC -i instancename
 srvctl stop instance -d RAC -i instancename
+srvctl stop instance -d RAC -i instance1,instance2
 
 srvctl add instance -d RAC -i instancename -n racnode1
 srvctl modify instance -d RAC -i instancename -n racnode1 -K
 srvctl remove instance -d RAC -i instancename
+```
+
+To manage PDBs, we need to add them as Oracle Service, though from version 12c to 19.8, we could add them using `srvctl add pluggabledatabase` too.
+
+We do not directly start or stop a PDB with srvctl. Instead we create a dedicated service for the PDB. When we start the service, Clusterware automatically opens the PDB on the required instances. When we stop the service, the PDB is closed.
+
+```sh
+# Add a Service for the PDB
+srvctl add service -db RAC -service mypdb_svc -pdb mypdb
+
+# Check your existing service
+srvctl config service -d RAC -s mypdb_svc
+
+# Start and Stop the PDB via its Service
+srvctl start service -d RAC -s mypdb_svc
+srvctl stop service -d RAC -s mypdb_svc
+srvctl status service -d RAC -s mypdb_svc
 ```
 
 ```sh

@@ -21,3 +21,23 @@ alter system set undo_tablespace=UNDOTBS2 sid='RAC02';
 
 -- Here, if you run above commands in CDB, UNDO tablespaces will be assigned to CDB but if you run inside PDB, these will be assigned to PDBs.
 ```
+
+In Oracle RAC, we can manage RAC PDBs by managing services. Assign one database service to each PDB to coordinate start, stop and placement of PDBs across instances.
+
+### To add a service for a PDB
+
+```sh
+srvctl add service -db RAC -pdb mypdb -service mypdbsrv
+```
+
+### To start and stop the PDB
+
+```sh
+# Check your existing service
+srvctl config service -d RAC -s mypdb_svc
+
+# Start and Stop the PDB via its Service
+srvctl start service -d RAC -s mypdb_svc
+srvctl stop service -d RAC -s mypdb_svc
+srvctl status service -d RAC -s mypdb_svc
+```
