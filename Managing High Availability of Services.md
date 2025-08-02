@@ -17,6 +17,8 @@ To create a service called `srvc1` with preferred instance RAC02 and an availabl
 
 ```sh
 srvctl add service -db RACDB -service SRVC1 -preferred RAC02 -available RAC01
+# or
+srvctl add service -d RACDB -s SRVC1 -p RAC02 -available RAC01
 ```
 
 Here, service `srvc1` will work on node RAC02 but if it fails, the service will failover to RAC01.
@@ -30,12 +32,23 @@ Here, service `srvc1` will work on node RAC02 but if it fails, the service will 
 ```sh
 srvctl start service -db RACDB -service srvc
 srvctl stop service -db RACDB -service srvc
+srvctl status service -db RACDB -service srvc
+# or
+srvctl start service -d RACDB -s srvc
+srvctl stop service -d RACDB -s srvc
+srvctl status service -d RACDB -s srvc
 ```
 
-* Disable a service at a named instance
+```sql
+show parameter service_names
+```
+
+* Disable/Enable a service at a named instance
 
 ```sh
 srvctl disable service -db RACDB -service srvc -instance RAC01
+# or
+srvctl enable service -d RACDB -s srvc -i RAC01
 ```
 
 ## Services and Transparent Application Failover
@@ -45,7 +58,6 @@ srvctl disable service -db RACDB -service srvc -instance RAC01
 * The TAF setting on a service can be NONE, BASIC or PRECONNECT and overrides any TAF setting in the client definition.
 
 >Note: TAF applies only to an admin-managed database, not to policy-managed database
-
 
 ## Using Services with the Scheduler
 
