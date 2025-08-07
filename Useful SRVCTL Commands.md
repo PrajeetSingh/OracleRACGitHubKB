@@ -47,6 +47,37 @@ srvctl stop service -d RAC -s mypdb_svc
 srvctl status service -d RAC -s mypdb_svc
 ```
 
+OR
+
+```sql
+-- Open a PDB in the current instance
+alter pluggable database pdb2  open;
+
+-- Open a PDB in some instances
+alter pluggable database pdb2 open Instances = ('RACInstance1');
+
+-- Open a PDB in all instances
+alter pluggable database database all open instances = all;
+
+alter pluggable database pdb2 save state;
+-- OR
+alter pluggable database all save state;
+```
+
+Close a PDB in the current instance only
+
+```sql
+alter pluggable database pdb2 close;
+```
+
+Close a PDB in some or all instances of the CDB
+
+```sql
+alter pluggable database pdb2 close instances = ('racInstance1');
+-- OR
+alter pluggable database pdb2 close instances = all;
+```
+
 ```sh
 # Start/Stop/Check ASM
 srvctl status asm 
