@@ -1,6 +1,6 @@
 # Startup and Shutdown RAC Instances
 
-```toml
+`
 -d Database Name
 -i Instance Name
 -s Service Name
@@ -9,7 +9,7 @@
 -a Available list
 -p TAF (Transparent application failover policy)
 -v Verbose
-```
+`
 
 ## Start & Stop RAC Databases
 
