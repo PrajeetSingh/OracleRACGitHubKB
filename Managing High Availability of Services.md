@@ -40,6 +40,8 @@ srvctl status service -d RACDB -s srvc
 ```
 
 ```sql
+sqlplus /@cluster01-scan.net:1521/srvc as sysdba
+select instance_name from v$instance;
 show parameter service_names
 ```
 
