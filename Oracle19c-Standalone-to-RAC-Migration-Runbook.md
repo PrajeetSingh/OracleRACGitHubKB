@@ -295,6 +295,7 @@ DELETE ARCHIVELOG ALL COMPLETED BEFORE 'SYSDATE-1';
 
 ## PHASE 10 — TNS entry
 
+```bash
 app1=
   (DESCRIPTION =
     (ADDRESS = (PROTOCOL = TCP)(HOST = rac-scan)(PORT = 1521))
@@ -303,3 +304,4 @@ app1=
       (SERVICE_NAME = app1)
     )
   )
+```
