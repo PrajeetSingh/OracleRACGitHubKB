@@ -25,7 +25,7 @@ srvctl config database -d RAC
 # Start/Stop/Check database (All Instances, Services and Listeners)
 srvctl status database -d RAC
 srvctl start database -d RAC -o nomount / mount / open
-srvctl stop database -d RAC -o immediate
+srvctl stop database -d RAC -o immediate / transactional / abort
 srvctl stop database -d RAC -eval
 ```
 
